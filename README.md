@@ -1,228 +1,167 @@
-# 🛡️ UpShield WAF
+# UpShield WAF
 
 <div align="center">
 
-![UpShield Banner](https://img.shields.io/badge/UpShield-WAF-00875A?style=for-the-badge&logo=wordpress&logoColor=white)
-![Version](https://img.shields.io/badge/version-1.1.0-blue?style=for-the-badge)
-![PHP](https://img.shields.io/badge/PHP-7.4+-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![License](https://img.shields.io/badge/license-GPL--3.0-green?style=for-the-badge)
+![WordPress](https://img.shields.io/badge/WordPress-5.0+-21759B?style=flat-square&logo=wordpress&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-7.4+-777BB4?style=flat-square&logo=php&logoColor=white)
+![License](https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square)
+![Version](https://img.shields.io/badge/Version-1.1.0-green?style=flat-square)
 
 **Enterprise-Grade Web Application Firewall for WordPress**
 
-*Developed by [UpTech](https://uptech.vn) • Trusted by 500+ websites*
-
-[📖 Documentation](#documentation) • [🚀 Quick Start](#quick-start) • [💡 Features](#features) • [🤝 Contributing](#contributing)
+[Documentation](#documentation) · [Installation](#installation) · [Features](#features) · [Contributing](#contributing)
 
 </div>
 
 ---
 
-## 🎯 Why UpShield?
+## Overview
 
-Most WordPress security plugins are **bloated**, **slow**, and **expensive**. UpShield is different:
+UpShield WAF is a comprehensive security solution designed to protect WordPress websites from common web vulnerabilities and attacks. Built with performance in mind, it provides real-time threat detection without compromising site speed.
 
-| Problem | UpShield Solution |
-|---------|-------------------|
-| 🐌 Slow scans | ⚡ Optimized async scanning |
-| 💰 Expensive premium | 🆓 Free forever, no feature locks |
-| 🔒 Closed source | 📖 100% open source |
-| 📊 No visibility | 🔍 Real-time traffic monitoring |
-| 🌍 US/EU focused | 🇻🇳 Built for APAC + Global |
+**Developed by [UpTech](https://uptech.vn)**
 
 ---
 
-## ✨ Features
+## Features
 
-### 🔥 Core Protection
-```
-✅ SQL Injection (SQLi) Detection
-✅ Cross-Site Scripting (XSS) Prevention  
-✅ Remote Code Execution (RCE) Blocking
-✅ Local File Inclusion (LFI) Protection
-✅ XML-RPC Attack Prevention
-✅ User Enumeration Blocking
-```
+### Core Protection
 
-### 🤖 Intelligent Defense
-```
-✅ AI-Powered Bot Detection
-✅ Behavioral Analysis
-✅ Rate Limiting (Global + Per-Endpoint)
-✅ Country-Based Blocking/Allowing
-✅ Threat Intelligence Integration (400K+ IPs)
-```
+- **SQL Injection Detection** - Pattern-based SQLi attack prevention
+- **Cross-Site Scripting (XSS)** - Input sanitization and output encoding
+- **Remote Code Execution (RCE)** - Command injection blocking  
+- **Local File Inclusion (LFI)** - Path traversal prevention
+- **XML-RPC Protection** - Optional endpoint blocking
+- **User Enumeration Prevention** - Author archive protection
 
-### 📱 Modern Features (v1.1+)
-```
-✅ Two-Factor Authentication (TOTP)
-✅ Telegram Real-Time Alerts
-✅ HTTP Security Headers (CSP, HSTS, etc.)
-✅ Dark Mode Dashboard (coming soon)
-```
+### Intelligent Defense
 
-### 📊 Monitoring & Analytics
+- **Rate Limiting** - Configurable per-endpoint throttling
+- **Country-Based Blocking** - Geo-restriction capabilities
+- **Threat Intelligence** - Integration with curated threat feeds (400K+ IPs)
+- **Behavioral Analysis** - Automated threat pattern recognition
+
+### Additional Modules
+
+- **Two-Factor Authentication** - TOTP-based verification
+- **Real-Time Alerts** - Telegram notification integration
+- **HTTP Security Headers** - CSP, HSTS, X-Frame-Options configuration
+- **Live Traffic Monitor** - Request logging and analysis
+
+---
+
+## Architecture
+
 ```
-✅ Live Traffic Monitor
-✅ Attack Pattern Analysis
-✅ Geographic Threat Map
-✅ Detailed Security Reports
++------------------------------------------------------------------+
+|                      UpShield WAF Engine                          |
++------------------------------------------------------------------+
+|                                                                   |
+|  +----------------+  +----------------+  +------------------+     |
+|  | Request        |  | Rule           |  | Threat           |     |
+|  | Analyzer       |->| Matcher        |->| Detector         |     |
+|  +----------------+  +----------------+  +------------------+     |
+|         |                                         |               |
+|         v                                         v               |
+|  +----------------+                      +------------------+     |
+|  | Rate           |                      | Response         |     |
+|  | Limiter        |                      | Handler          |     |
+|  +----------------+                      +------------------+     |
+|                                                                   |
++------------------------------------------------------------------+
+|  Integrations: Telegram | 2FA | Cloudflare | Security Headers    |
++------------------------------------------------------------------+
 ```
 
 ---
 
-## 🚀 Quick Start
+## Installation
 
-### Installation
+### Method 1: WordPress Admin
 
-**Method 1: WordPress Admin**
-```
-1. Download the latest release
-2. Go to Plugins → Add New → Upload Plugin
-3. Activate UpShield WAF
-4. Navigate to UpShield → Settings
-```
+1. Download the latest release from [GitHub Releases](https://github.com/nhattnh/upshield/releases)
+2. Navigate to **Plugins > Add New > Upload Plugin**
+3. Upload the ZIP file and activate
 
-**Method 2: WP-CLI**
+### Method 2: WP-CLI
+
 ```bash
 wp plugin install upshield-waf --activate
 ```
 
-**Method 3: Composer**
+### Method 3: Manual Installation
+
 ```bash
-composer require uptech/upshield-waf
+cd /path/to/wordpress/wp-content/plugins
+git clone https://github.com/nhattnh/upshield.git upshield-waf
 ```
 
-### First-Time Setup
+---
 
-```bash
-# The setup wizard will guide you through:
+## Configuration
+
+After activation, navigate to **UpShield** in the WordPress admin menu.
+
+### Recommended Initial Setup
+
 1. Enable WAF protection
-2. Configure protection level
-3. Set up alerts (email/Telegram)
-4. Optional: Enable 2FA for admins
-```
+2. Set firewall mode to "Protecting"
+3. Whitelist administrator IPs
+4. Configure rate limiting thresholds
+5. Enable Two-Factor Authentication for admin accounts
+
+For detailed configuration options, see [docs/configuration.md](docs/configuration.md).
 
 ---
 
-## 📖 Documentation
+## Requirements
 
-| Topic | Description |
-|-------|-------------|
-| [Installation Guide](docs/installation.md) | Step-by-step setup |
-| [Configuration](docs/configuration.md) | All settings explained |
-| [Threat Intelligence](docs/threat-intel.md) | How our threat feed works |
-| [API Reference](docs/api.md) | REST API documentation |
-| [Troubleshooting](docs/troubleshooting.md) | Common issues & fixes |
-| [Changelog](CHANGELOG.md) | Version history |
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| WordPress | 5.0     | 6.0+        |
+| PHP       | 7.4     | 8.0+        |
+| MySQL     | 5.6     | 8.0+        |
 
 ---
 
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    UpShield WAF Engine                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
-│  │   Request    │  │    Rule      │  │   Threat     │       │
-│  │   Analyzer   │──│   Matcher    │──│  Detector    │       │
-│  └──────────────┘  └──────────────┘  └──────────────┘       │
-│         │                                    │               │
-│         ▼                                    ▼               │
-│  ┌──────────────┐                    ┌──────────────┐       │
-│  │     Rate     │                    │   Response   │       │
-│  │   Limiter    │                    │   Handler    │       │
-│  └──────────────┘                    └──────────────┘       │
-│                                                              │
-├─────────────────────────────────────────────────────────────┤
-│  Integrations: Telegram │ 2FA │ Cloudflare │ Security Hdrs  │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📊 Performance
+## Performance
 
 Benchmarked on standard WordPress installation:
 
-| Metric | Without UpShield | With UpShield | Impact |
-|--------|------------------|---------------|--------|
-| TTFB | 245ms | 248ms | +1.2% |
-| Memory | 48MB | 52MB | +8.3% |
-| CPU | Baseline | +0.5% | Minimal |
-
-> 💡 UpShield is optimized to add minimal overhead while providing maximum protection.
+| Metric        | Impact    |
+|---------------|-----------|
+| TTFB          | +1.2%     |
+| Memory Usage  | +4-8 MB   |
+| CPU Overhead  | Minimal   |
 
 ---
 
-## 🔒 Security
+## Documentation
 
-### Responsible Disclosure
-
-Found a vulnerability? Please email **security@uptech.vn** (or create a private security advisory).
-
-**Do NOT create public GitHub issues for security vulnerabilities.**
-
-### Security Best Practices
-
-UpShield follows:
-- ✅ OWASP Top 10 protection
-- ✅ WordPress VIP coding standards
-- ✅ Regular security audits
-- ✅ Dependency vulnerability scanning
+- [Installation Guide](docs/installation.md)
+- [Configuration Reference](docs/configuration.md)
+- [Changelog](CHANGELOG.md)
+- [Security Policy](SECURITY.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
 
 ---
 
-## 🤝 Contributing
+## Support
 
-We love contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-```bash
-# Development setup
-git clone https://github.com/nhattnh/upshield.git
-cd upshield
-composer install
-npm install
-
-# Run tests
-composer test
-
-# Build for production
-npm run build
-```
-
-### Contributors
-
-<a href="https://github.com/nhattnh/upshield/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=nhattnh/upshield" />
-</a>
+- **Documentation**: [uptech.vn/docs](https://uptech.vn)
+- **Issues**: [GitHub Issues](https://github.com/nhattnh/upshield/issues)
+- **Email**: info@uptech.vn
 
 ---
 
-## 📜 License
+## License
 
 UpShield WAF is open-source software licensed under the [GPL-3.0 License](LICENSE).
 
 ---
 
-## 🌟 Support the Project
-
-If UpShield helps protect your site, consider:
-
-- ⭐ **Star this repo** - It helps others discover UpShield
-- 🐛 **Report bugs** - Help us improve
-- 💡 **Suggest features** - Shape the roadmap
-- 📢 **Spread the word** - Tell others about UpShield
-
----
-
 <div align="center">
 
-**Made with ❤️ by [UpTech](https://uptech.vn)**
-
-*Protecting WordPress sites since 2024*
-
-[🔝 Back to Top](#-upshield-waf)
+**UpShield WAF** · Developed by [UpTech](https://uptech.vn)
 
 </div>

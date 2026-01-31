@@ -1,96 +1,80 @@
 # Security Policy
 
-## 🔒 Supported Versions
+## Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.1.x   | ✅ Active support  |
-| 1.0.x   | ⚠️ Security fixes only |
-| < 1.0   | ❌ No longer supported |
+| Version | Status              |
+|---------|---------------------|
+| 1.1.x   | Actively supported  |
+| 1.0.x   | Security fixes only |
+| < 1.0   | End of life         |
 
 ---
 
-## 🚨 Reporting a Vulnerability
+## Reporting a Vulnerability
 
-**Please do NOT report security vulnerabilities through public GitHub issues.**
+**Do not report security vulnerabilities through public GitHub issues.**
 
-### How to Report
+### Reporting Process
 
-1. **Email**: Send details to **security@uptech.vn**
-2. **Subject**: `[SECURITY] UpShield WAF - Brief Description`
-3. **Include**:
-   - Type of vulnerability
+1. Email security concerns to **info@uptech.vn**
+2. Use subject line: `[SECURITY] UpShield WAF - Brief Description`
+3. Include:
+   - Vulnerability type and severity assessment
    - Steps to reproduce
-   - Potential impact
-   - Suggested fix (if any)
+   - Potential impact analysis
+   - Suggested remediation (if applicable)
 
-### What to Expect
+### Response Timeline
 
-| Timeline | Action |
-|----------|--------|
-| 24 hours | Acknowledgment of your report |
-| 72 hours | Initial assessment |
-| 7 days | Status update |
-| 30 days | Fix deployed (for valid vulnerabilities) |
+| Timeframe  | Action                          |
+|------------|--------------------------------|
+| 24 hours   | Acknowledgment of report       |
+| 72 hours   | Initial assessment completed   |
+| 7 days     | Status update provided         |
+| 30 days    | Fix deployed (valid issues)    |
 
-### Safe Harbor
+### Responsible Disclosure
 
-We consider security research conducted in good faith:
+We follow coordinated disclosure practices:
 
-- ✅ Make a good faith effort to avoid privacy violations
-- ✅ Give us reasonable time to respond before disclosure
-- ✅ Do not access or modify data that doesn't belong to you
-- ✅ Do not degrade our services
-
-We will:
-- ✅ Work with you to understand and resolve the issue
-- ✅ Not pursue legal action for good faith research
-- ✅ Credit you in our security advisories (if desired)
+- Provide reasonable time for remediation before public disclosure
+- Credit reporters in security advisories upon request
+- Do not pursue legal action for good-faith security research
 
 ---
 
-## 🛡️ Security Best Practices
+## Security Features
 
-When using UpShield WAF:
+UpShield provides protection against:
 
-1. **Keep WordPress updated** - Always run the latest version
-2. **Keep plugins updated** - Including UpShield
-3. **Use strong passwords** - Enable 2FA for all admins
-4. **Regular backups** - Before any security changes
-5. **Monitor logs** - Review Live Traffic regularly
+| Threat Type           | Protection Level |
+|-----------------------|------------------|
+| SQL Injection         | High             |
+| XSS                   | High             |
+| RCE                   | High             |
+| LFI/RFI               | High             |
+| Brute Force           | High             |
+| Bad Bots              | Medium           |
+| DDoS (Rate Limiting)  | Medium           |
+| Zero-Day (Threat Intel) | Medium         |
 
 ---
 
-## 📋 Security Checklist
+## Best Practices
 
 After installing UpShield:
 
-- [ ] Enable WAF protection
-- [ ] Enable Login Security
-- [ ] Enable 2FA for admin accounts
-- [ ] Configure Telegram alerts
-- [ ] Review blocked countries
-- [ ] Set up rate limiting
-- [ ] Enable Security Headers
-- [ ] Run initial malware scan
+1. Enable WAF protection in "Protecting" mode
+2. Configure Two-Factor Authentication for all admin accounts
+3. Set up real-time alerts (Telegram or email)
+4. Review and configure rate limiting thresholds
+5. Run initial malware scan
+6. Enable HTTP Security Headers
+7. Regularly review Live Traffic logs
 
 ---
 
-## 🔐 Security Features
+## Contact
 
-UpShield protects against:
-
-| Attack Type | Protection Level |
-|-------------|-----------------|
-| SQL Injection | 🟢 High |
-| XSS | 🟢 High |
-| RCE | 🟢 High |
-| LFI/RFI | 🟢 High |
-| Brute Force | 🟢 High |
-| Bad Bots | 🟡 Medium |
-| DDoS | 🟡 Medium (Rate Limiting) |
-| Zero-Day | 🟡 Medium (Threat Intel) |
-
----
-
-**Thank you for helping keep UpShield and its users safe! 🙏**
+- **Security Reports**: info@uptech.vn
+- **General Support**: [GitHub Issues](https://github.com/nhattnh/upshield/issues)

@@ -1,79 +1,73 @@
 # Contributing to UpShield WAF
 
-First off, thank you for considering contributing to UpShield! 🎉
+Thank you for your interest in contributing to UpShield WAF.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
-- [How Can I Contribute?](#how-can-i-contribute)
+- [How to Contribute](#how-to-contribute)
 - [Development Setup](#development-setup)
 - [Pull Request Process](#pull-request-process)
-- [Style Guidelines](#style-guidelines)
+- [Coding Standards](#coding-standards)
 
 ---
 
-## 📜 Code of Conduct
+## Code of Conduct
 
-This project adheres to a Code of Conduct. By participating, you are expected to uphold this code.
-
-**Be respectful, inclusive, and constructive.**
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ---
 
-## 🤝 How Can I Contribute?
+## How to Contribute
 
-### 🐛 Reporting Bugs
+### Reporting Bugs
 
-Before creating bug reports, please check existing issues. When creating a bug report, include:
+Before creating a bug report, check existing issues. Include:
 
-- **Clear title** describing the issue
-- **Steps to reproduce** the behavior
-- **Expected behavior** vs actual behavior
-- **Screenshots** if applicable
-- **Environment details** (WordPress version, PHP version, etc.)
+- Clear, descriptive title
+- Steps to reproduce the issue
+- Expected vs. actual behavior
+- Environment details (WordPress version, PHP version, server configuration)
+- Screenshots or logs if applicable
 
-### 💡 Suggesting Features
+### Suggesting Features
 
-Feature suggestions are welcome! Please:
+Feature suggestions are welcome. Please:
 
-1. Check if the feature already exists
-2. Check if it's already been suggested
-3. Create an issue with the `[Feature Request]` prefix
-4. Describe the use case and benefits
+1. Check if the feature already exists or has been previously requested
+2. Create an issue with `[Feature Request]` prefix
+3. Describe the use case and expected benefits
 
-### 🔧 Code Contributions
+### Code Contributions
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit changes: `git commit -m 'Add feature description'`
+4. Push to branch: `git push origin feature/your-feature`
 5. Open a Pull Request
 
 ---
 
-## 🛠️ Development Setup
+## Development Setup
 
 ### Prerequisites
 
-- PHP 7.4+
-- WordPress 5.0+
-- Composer
-- Node.js 16+ (for build tools)
+- PHP 7.4 or higher
+- WordPress 5.0 or higher
+- Composer (optional, for development tools)
+- Node.js 16+ (optional, for asset building)
 
 ### Installation
 
 ```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/upshield.git
+# Clone the repository
+git clone https://github.com/nhattnh/upshield.git
 cd upshield
 
-# Install PHP dependencies
+# Install PHP dependencies (optional)
 composer install
 
-# Install Node dependencies (optional, for building assets)
-npm install
-
-# Create a symlink in your WordPress plugins directory
+# Create symlink in WordPress plugins directory
 ln -s /path/to/upshield /path/to/wordpress/wp-content/plugins/upshield-waf
 ```
 
@@ -83,54 +77,53 @@ ln -s /path/to/upshield /path/to/wordpress/wp-content/plugins/upshield-waf
 # PHP Unit tests
 composer test
 
-# PHP CodeSniffer
+# Code style check
 composer phpcs
-
-# Fix coding standards automatically
-composer phpcbf
 ```
 
 ---
 
-## 🔀 Pull Request Process
+## Pull Request Process
 
-1. **Update documentation** if you're changing functionality
-2. **Add tests** for new features
-3. **Follow coding standards** (WordPress VIP)
-4. **Write clear commit messages**
-5. **Reference related issues** in PR description
+1. Update documentation for any functionality changes
+2. Add tests for new features
+3. Ensure code follows WordPress coding standards
+4. Write clear, descriptive commit messages
+5. Reference related issues in the PR description
 
-### PR Title Format
+### Commit Message Format
 
 ```
-[Type] Short description
+[type] Brief description
 
 Types:
 - feat: New feature
 - fix: Bug fix
-- docs: Documentation only
-- style: Code style (formatting, etc.)
-- refactor: Code refactoring
-- test: Adding tests
+- docs: Documentation changes
+- style: Code formatting
+- refactor: Code restructuring
+- test: Test additions
 - chore: Maintenance tasks
 ```
 
 ---
 
-## 📝 Style Guidelines
+## Coding Standards
 
 ### PHP
 
-- Follow [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/)
+- Follow [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
 - Use meaningful variable and function names
-- Comment complex logic
-- Use type hints where possible
+- Document functions with PHPDoc comments
+- Use type hints where applicable
+
+### Example
 
 ```php
 /**
- * Process incoming request.
+ * Process incoming request for threats.
  *
- * @param array $request_data Request data to process.
+ * @param array $request_data Request data to analyze.
  * @return bool True if request is safe, false otherwise.
  */
 public function process_request( array $request_data ): bool {
@@ -138,36 +131,13 @@ public function process_request( array $request_data ): bool {
 }
 ```
 
-### JavaScript
+---
 
-- Use ES6+ syntax
-- Follow WordPress JavaScript coding standards
-- Use meaningful variable names
+## Questions
 
-### CSS
-
-- Use BEM naming convention
-- Mobile-first approach
-- Use CSS custom properties for theming
+- Open an issue with `[Question]` prefix
+- Email: info@uptech.vn
 
 ---
 
-## 🏷️ Versioning
-
-We use [Semantic Versioning](https://semver.org/):
-
-- **MAJOR**: Breaking changes
-- **MINOR**: New features (backwards compatible)
-- **PATCH**: Bug fixes (backwards compatible)
-
----
-
-## 📞 Questions?
-
-Feel free to:
-- Open an issue with the `[Question]` prefix
-- Email us at dev@uptech.vn
-
----
-
-**Thank you for contributing! 🙏**
+**Thank you for contributing.**
