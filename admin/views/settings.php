@@ -77,6 +77,21 @@ $vswaf_early_blocking_enabled = $vswaf_options['early_blocking_enabled'];
             <span class="dashicons dashicons-info"></span>
             <?php esc_html_e('About', 'upshield-waf'); ?>
         </a>
+        <a href="#telegram" class="tab-btn">
+            <span class="dashicons dashicons-format-chat"></span>
+            <?php esc_html_e('Telegram', 'upshield-waf'); ?>
+            <span class="badge badge-new">NEW</span>
+        </a>
+        <a href="#two-factor" class="tab-btn">
+            <span class="dashicons dashicons-smartphone"></span>
+            <?php esc_html_e('2FA', 'upshield-waf'); ?>
+            <span class="badge badge-new">NEW</span>
+        </a>
+        <a href="#security-headers" class="tab-btn">
+            <span class="dashicons dashicons-admin-network"></span>
+            <?php esc_html_e('Headers', 'upshield-waf'); ?>
+            <span class="badge badge-new">NEW</span>
+        </a>
     </div>
 
     <form method="post" action="options.php" id="upshield-settings-form">
@@ -1419,6 +1434,273 @@ $vswaf_early_blocking_enabled = $vswaf_options['early_blocking_enabled'];
                             <?php esc_html_e('Star us on GitHub', 'upshield-waf'); ?>
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Telegram Alerts (NEW) -->
+        <div class="upshield-tab-content" id="telegram">
+            <div class="upshield-card">
+                <div class="card-header">
+                    <h2>
+                        <span class="dashicons dashicons-format-chat"></span>
+                        <?php esc_html_e('Telegram Alerts', 'upshield-waf'); ?>
+                        <span class="badge badge-new" style="margin-left: 10px;">NEW in v1.1</span>
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="notice notice-info inline" style="margin: 0 0 20px;">
+                        <p>
+                            <strong><?php esc_html_e('How to setup:', 'upshield-waf'); ?></strong>
+                            <?php esc_html_e('1. Create a bot via @BotFather on Telegram. 2. Get your Chat ID via @userinfobot. 3. Enter both below.', 'upshield-waf'); ?>
+                        </p>
+                    </div>
+                    
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Enable Telegram Alerts', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[telegram_enabled]" value="1" 
+                                           <?php checked($vswaf_options['telegram_enabled'] ?? false); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <p class="description"><?php esc_html_e('Receive real-time security alerts via Telegram.', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Bot Token', 'upshield-waf'); ?></th>
+                            <td>
+                                <input type="text" name="upshield_options[telegram_bot_token]" 
+                                       value="<?php echo esc_attr($vswaf_options['telegram_bot_token'] ?? ''); ?>" 
+                                       class="regular-text" placeholder="123456789:ABCdefGHIjklMNOpqrsTUVwxyz">
+                                <p class="description"><?php esc_html_e('Get this from @BotFather when you create your bot.', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Chat ID', 'upshield-waf'); ?></th>
+                            <td>
+                                <input type="text" name="upshield_options[telegram_chat_id]" 
+                                       value="<?php echo esc_attr($vswaf_options['telegram_chat_id'] ?? ''); ?>" 
+                                       class="regular-text" placeholder="-1001234567890">
+                                <p class="description"><?php esc_html_e('Your personal or group chat ID. Get it from @userinfobot.', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Test Connection', 'upshield-waf'); ?></th>
+                            <td>
+                                <button type="button" class="button" id="test-telegram-btn">
+                                    <span class="dashicons dashicons-admin-plugins" style="vertical-align: text-bottom;"></span>
+                                    <?php esc_html_e('Send Test Message', 'upshield-waf'); ?>
+                                </button>
+                                <span id="telegram-test-result" style="margin-left: 10px;"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two-Factor Authentication (NEW) -->
+        <div class="upshield-tab-content" id="two-factor">
+            <div class="upshield-card">
+                <div class="card-header">
+                    <h2>
+                        <span class="dashicons dashicons-smartphone"></span>
+                        <?php esc_html_e('Two-Factor Authentication (2FA)', 'upshield-waf'); ?>
+                        <span class="badge badge-new" style="margin-left: 10px;">NEW in v1.1</span>
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="notice notice-info inline" style="margin: 0 0 20px;">
+                        <p>
+                            <strong><?php esc_html_e('TOTP-based 2FA', 'upshield-waf'); ?></strong> - 
+                            <?php esc_html_e('Compatible with Google Authenticator, Authy, Microsoft Authenticator, and other TOTP apps.', 'upshield-waf'); ?>
+                        </p>
+                    </div>
+                    
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Enable 2FA', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[two_factor_enabled]" value="1" 
+                                           <?php checked($vswaf_options['two_factor_enabled'] ?? false); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <p class="description"><?php esc_html_e('Enable Two-Factor Authentication for WordPress login.', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Require for Admins', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[two_factor_require_admins]" value="1" 
+                                           <?php checked($vswaf_options['two_factor_require_admins'] ?? false); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <p class="description"><?php esc_html_e('Force all administrators to set up 2FA.', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('User Setup', 'upshield-waf'); ?></th>
+                            <td>
+                                <p class="description">
+                                    <?php esc_html_e('Users can set up 2FA from their Profile page in WordPress admin.', 'upshield-waf'); ?>
+                                    <br>
+                                    <a href="<?php echo admin_url('profile.php'); ?>" class="button" style="margin-top: 10px;">
+                                        <span class="dashicons dashicons-admin-users" style="vertical-align: text-bottom;"></span>
+                                        <?php esc_html_e('Go to Profile', 'upshield-waf'); ?>
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Headers (NEW) -->
+        <div class="upshield-tab-content" id="security-headers">
+            <div class="upshield-card">
+                <div class="card-header">
+                    <h2>
+                        <span class="dashicons dashicons-admin-network"></span>
+                        <?php esc_html_e('Security Headers', 'upshield-waf'); ?>
+                        <span class="badge badge-new" style="margin-left: 10px;">NEW in v1.1</span>
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="notice notice-warning inline" style="margin: 0 0 20px;">
+                        <p>
+                            <strong><?php esc_html_e('Warning:', 'upshield-waf'); ?></strong>
+                            <?php esc_html_e('Incorrect header configuration may break your site. Test carefully before enabling on production.', 'upshield-waf'); ?>
+                        </p>
+                    </div>
+                    
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Enable Security Headers', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[security_headers_enabled]" value="1" 
+                                           <?php checked($vswaf_options['security_headers_enabled'] ?? false); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <p class="description"><?php esc_html_e('Add HTTP security headers to protect against common attacks.', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Skip Admin Pages', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[security_headers_skip_admin]" value="1" 
+                                           <?php checked($vswaf_options['security_headers_skip_admin'] ?? true); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <p class="description"><?php esc_html_e('Do not apply headers to admin and login pages (recommended).', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <hr style="margin: 25px 0;">
+                    <h3 style="margin-top: 0;"><?php esc_html_e('Basic Headers', 'upshield-waf'); ?></h3>
+                    
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><?php esc_html_e('X-Frame-Options', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[header_x_frame_options]" value="1" 
+                                           <?php checked($vswaf_options['header_x_frame_options'] ?? true); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <select name="upshield_options[header_x_frame_options_value]" style="margin-left: 10px;">
+                                    <option value="DENY" <?php selected($vswaf_options['header_x_frame_options_value'] ?? 'SAMEORIGIN', 'DENY'); ?>>DENY</option>
+                                    <option value="SAMEORIGIN" <?php selected($vswaf_options['header_x_frame_options_value'] ?? 'SAMEORIGIN', 'SAMEORIGIN'); ?>>SAMEORIGIN</option>
+                                </select>
+                                <p class="description"><?php esc_html_e('Prevents clickjacking attacks by controlling iframe embedding.', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('X-Content-Type-Options', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[header_x_content_type]" value="1" 
+                                           <?php checked($vswaf_options['header_x_content_type'] ?? true); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <p class="description"><?php esc_html_e('Prevents MIME type sniffing (nosniff).', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('X-XSS-Protection', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[header_x_xss_protection]" value="1" 
+                                           <?php checked($vswaf_options['header_x_xss_protection'] ?? true); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <p class="description"><?php esc_html_e('Legacy XSS protection for older browsers.', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Referrer-Policy', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[header_referrer_policy]" value="1" 
+                                           <?php checked($vswaf_options['header_referrer_policy'] ?? true); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <select name="upshield_options[header_referrer_policy_value]" style="margin-left: 10px;">
+                                    <option value="no-referrer" <?php selected($vswaf_options['header_referrer_policy_value'] ?? 'strict-origin-when-cross-origin', 'no-referrer'); ?>>no-referrer</option>
+                                    <option value="no-referrer-when-downgrade" <?php selected($vswaf_options['header_referrer_policy_value'] ?? 'strict-origin-when-cross-origin', 'no-referrer-when-downgrade'); ?>>no-referrer-when-downgrade</option>
+                                    <option value="same-origin" <?php selected($vswaf_options['header_referrer_policy_value'] ?? 'strict-origin-when-cross-origin', 'same-origin'); ?>>same-origin</option>
+                                    <option value="strict-origin" <?php selected($vswaf_options['header_referrer_policy_value'] ?? 'strict-origin-when-cross-origin', 'strict-origin'); ?>>strict-origin</option>
+                                    <option value="strict-origin-when-cross-origin" <?php selected($vswaf_options['header_referrer_policy_value'] ?? 'strict-origin-when-cross-origin', 'strict-origin-when-cross-origin'); ?>>strict-origin-when-cross-origin</option>
+                                </select>
+                                <p class="description"><?php esc_html_e('Controls referrer information sent with requests.', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <hr style="margin: 25px 0;">
+                    <h3 style="margin-top: 0;"><?php esc_html_e('HSTS (HTTPS Only)', 'upshield-waf'); ?></h3>
+                    
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Enable HSTS', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[header_hsts_enabled]" value="1" 
+                                           <?php checked($vswaf_options['header_hsts_enabled'] ?? false); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                                <p class="description"><?php esc_html_e('Force HTTPS connections. Only enable if your site has SSL!', 'upshield-waf'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Max Age', 'upshield-waf'); ?></th>
+                            <td>
+                                <select name="upshield_options[header_hsts_max_age]">
+                                    <option value="86400" <?php selected($vswaf_options['header_hsts_max_age'] ?? 31536000, 86400); ?>>1 day</option>
+                                    <option value="604800" <?php selected($vswaf_options['header_hsts_max_age'] ?? 31536000, 604800); ?>>1 week</option>
+                                    <option value="2592000" <?php selected($vswaf_options['header_hsts_max_age'] ?? 31536000, 2592000); ?>>1 month</option>
+                                    <option value="31536000" <?php selected($vswaf_options['header_hsts_max_age'] ?? 31536000, 31536000); ?>>1 year</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('Include Subdomains', 'upshield-waf'); ?></th>
+                            <td>
+                                <label class="upshield-switch">
+                                    <input type="checkbox" name="upshield_options[header_hsts_subdomains]" value="1" 
+                                           <?php checked($vswaf_options['header_hsts_subdomains'] ?? false); ?>>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
