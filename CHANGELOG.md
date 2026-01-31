@@ -10,10 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2024-01-31
 
 ### Added
-- Two-Factor Authentication (2FA) with TOTP support
-- Telegram real-time alert notifications
-- HTTP Security Headers configuration (CSP, HSTS, X-Frame-Options)
-- New tabbed settings interface for feature management
+- **Two-Factor Authentication (2FA)** - TOTP-based authentication compatible with Google Authenticator, Authy, and other TOTP apps
+- **Telegram Alerts** - Real-time security notifications via Telegram bot
+- **HTTP Security Headers** - Configurable security headers (CSP, HSTS, X-Frame-Options, etc.)
+- **Settings UI** - New tabbed interface for managing all features
 
 ### Changed
 - Updated version to 1.1.0
@@ -21,32 +21,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhanced plugin initialization flow
 
 ### Fixed
-- Singleton pattern implementation in WAF engine
-- Namespace case sensitivity issues
+- Fixed singleton pattern implementation in WAF engine
+- Fixed namespace case sensitivity issues
 
 ---
 
 ## [1.0.0] - 2024-01-31
 
 ### Added
-- Core WAF Engine with real-time request analysis
-- SQL Injection (SQLi) protection
-- Cross-Site Scripting (XSS) prevention
-- Remote Code Execution (RCE) blocking
-- Local File Inclusion (LFI) protection
-- Bad bot user-agent filtering
-- XML-RPC endpoint protection
-- User enumeration prevention
-- Rate limiting (global and per-endpoint)
-- Country-based access control
-- IP whitelist and blacklist management
-- Threat intelligence feed integration
-- Live traffic monitoring
-- Login security with brute force protection
-- Malware file scanner
-- CAPTCHA integration (reCAPTCHA, hCaptcha, Turnstile)
-- Admin dashboard with security overview
-- Setup wizard for first-time configuration
+- **Core WAF Engine** - Real-time request analysis and threat detection
+- **SQL Injection Protection** - Comprehensive SQLi pattern detection
+- **XSS Prevention** - Cross-site scripting attack blocking
+- **RCE Protection** - Remote code execution attempt prevention
+- **LFI Protection** - Local file inclusion attack blocking
+- **Bad Bot Blocking** - Known malicious bot user-agent filtering
+- **XML-RPC Protection** - Optional XML-RPC endpoint blocking
+- **User Enumeration Prevention** - Author archive and REST API protection
+- **Rate Limiting** - Global and per-endpoint request limiting
+- **Country Blocking** - Geo-based access control
+- **IP Management** - Whitelist and blacklist management
+- **Threat Intelligence** - Integration with threat feed (400K+ IPs)
+- **Live Traffic Monitor** - Real-time request logging and visualization
+- **Login Security** - Brute force protection with lockouts
+- **Malware Scanner** - File integrity and malware detection
+- **CAPTCHA Integration** - Support for reCAPTCHA, hCaptcha, Turnstile
+- **Admin Dashboard** - Comprehensive security overview
+- **Setup Wizard** - Guided first-time configuration
 
 ---
 
@@ -55,10 +55,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dark mode dashboard
 - REST API endpoint protection
 - GraphQL attack prevention
+- Advanced bot detection with ML
 - Login URL customization
 - Multi-site network support
-- WP-CLI command interface
-- Settings import/export
+- WP-CLI commands
+- Import/Export settings
+
+---
+
+## Version History
+
+| Version | Date | Highlights |
+|---------|------|------------|
+| 1.1.0 | 2024-01-31 | 2FA, Telegram, Security Headers |
+| 1.0.0 | 2024-01-31 | Initial release |
 
 ---
 

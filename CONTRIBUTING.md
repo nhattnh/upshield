@@ -1,49 +1,52 @@
 # Contributing to UpShield WAF
 
-Thank you for your interest in contributing to UpShield WAF.
+Thank you for considering contributing to UpShield!
 
 ## Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
-- [How to Contribute](#how-to-contribute)
+- [How Can I Contribute?](#how-can-i-contribute)
 - [Development Setup](#development-setup)
 - [Pull Request Process](#pull-request-process)
-- [Coding Standards](#coding-standards)
+- [Style Guidelines](#style-guidelines)
 
 ---
 
 ## Code of Conduct
 
-This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code.
+
+**Be respectful, inclusive, and constructive.**
 
 ---
 
-## How to Contribute
+## How Can I Contribute?
 
 ### Reporting Bugs
 
-Before creating a bug report, check existing issues. Include:
+Before creating bug reports, please check existing issues. When creating a bug report, include:
 
-- Clear, descriptive title
-- Steps to reproduce the issue
-- Expected vs. actual behavior
-- Environment details (WordPress version, PHP version, server configuration)
-- Screenshots or logs if applicable
+- Clear title describing the issue
+- Steps to reproduce the behavior
+- Expected behavior vs actual behavior
+- Screenshots if applicable
+- Environment details (WordPress version, PHP version, etc.)
 
 ### Suggesting Features
 
-Feature suggestions are welcome. Please:
+Feature suggestions are welcome! Please:
 
-1. Check if the feature already exists or has been previously requested
-2. Create an issue with `[Feature Request]` prefix
-3. Describe the use case and expected benefits
+1. Check if the feature already exists
+2. Check if it's already been suggested
+3. Create an issue with the `[Feature Request]` prefix
+4. Describe the use case and benefits
 
 ### Code Contributions
 
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Commit changes: `git commit -m 'Add feature description'`
-4. Push to branch: `git push origin feature/your-feature`
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ---
@@ -52,22 +55,22 @@ Feature suggestions are welcome. Please:
 
 ### Prerequisites
 
-- PHP 7.4 or higher
-- WordPress 5.0 or higher
-- Composer (optional, for development tools)
-- Node.js 16+ (optional, for asset building)
+- PHP 7.4+
+- WordPress 5.0+
+- Composer
+- Node.js 16+ (for build tools)
 
 ### Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/nhattnh/upshield.git
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/upshield.git
 cd upshield
 
-# Install PHP dependencies (optional)
+# Install PHP dependencies
 composer install
 
-# Create symlink in WordPress plugins directory
+# Create a symlink in your WordPress plugins directory
 ln -s /path/to/upshield /path/to/wordpress/wp-content/plugins/upshield-waf
 ```
 
@@ -77,7 +80,7 @@ ln -s /path/to/upshield /path/to/wordpress/wp-content/plugins/upshield-waf
 # PHP Unit tests
 composer test
 
-# Code style check
+# PHP CodeSniffer
 composer phpcs
 ```
 
@@ -85,45 +88,43 @@ composer phpcs
 
 ## Pull Request Process
 
-1. Update documentation for any functionality changes
+1. Update documentation if you're changing functionality
 2. Add tests for new features
-3. Ensure code follows WordPress coding standards
-4. Write clear, descriptive commit messages
-5. Reference related issues in the PR description
+3. Follow coding standards (WordPress VIP)
+4. Write clear commit messages
+5. Reference related issues in PR description
 
 ### Commit Message Format
 
 ```
-[type] Brief description
+[Type] Short description
 
 Types:
 - feat: New feature
 - fix: Bug fix
-- docs: Documentation changes
-- style: Code formatting
-- refactor: Code restructuring
-- test: Test additions
+- docs: Documentation only
+- style: Code style (formatting, etc.)
+- refactor: Code refactoring
+- test: Adding tests
 - chore: Maintenance tasks
 ```
 
 ---
 
-## Coding Standards
+## Style Guidelines
 
 ### PHP
 
-- Follow [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
+- Follow [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/)
 - Use meaningful variable and function names
-- Document functions with PHPDoc comments
-- Use type hints where applicable
-
-### Example
+- Comment complex logic
+- Use type hints where possible
 
 ```php
 /**
- * Process incoming request for threats.
+ * Process incoming request.
  *
- * @param array $request_data Request data to analyze.
+ * @param array $request_data Request data to process.
  * @return bool True if request is safe, false otherwise.
  */
 public function process_request( array $request_data ): bool {
@@ -133,11 +134,11 @@ public function process_request( array $request_data ): bool {
 
 ---
 
-## Questions
+## Questions?
 
-- Open an issue with `[Question]` prefix
-- Email: info@uptech.vn
+- Open an issue with the `[Question]` prefix
+- Email us at info@uptech.vn
 
 ---
 
-**Thank you for contributing.**
+**Thank you for contributing!**
