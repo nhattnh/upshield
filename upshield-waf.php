@@ -112,7 +112,7 @@ function upshield_init_waf_early() {
     }
 
     require_once UPSHIELD_PLUGIN_DIR . 'includes/waf/class-waf-engine.php';
-    $waf = new \UpShield\Waf\WafEngine();
+    $waf = \UpShield\WAF\WAFEngine::get_instance();
     $waf->init();
 }
 
