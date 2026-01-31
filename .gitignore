@@ -1,0 +1,33 @@
+# Dependencies
+/node_modules/
+/vendor/
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+debug.log
+
+# Data files (generated at runtime)
+/data/*.db
+/data/*.json
+!/data/index.php
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Build
+*.zip
+
+# Environment
+.env
+.env.local
