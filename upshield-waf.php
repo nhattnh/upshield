@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('UPSHIELD_VERSION', '1.0.0');
+define('UPSHIELD_VERSION', '1.1.0');
 define('UPSHIELD_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('UPSHIELD_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('UPSHIELD_PLUGIN_BASENAME', plugin_basename(__FILE__));
@@ -55,11 +55,14 @@ spl_autoload_register(function ($class) {
         'Firewall\\CloudflareIntegration' => 'firewall/class-cloudflare-integration.php',
         'Firewall\\IPWhitelistSync' => 'firewall/class-ip-whitelist-sync.php',
         'Firewall\\ThreatsSharing' => 'firewall/class-threats-sharing.php',
+        'Firewall\\SecurityHeaders' => 'firewall/class-security-headers.php',
         'Scanner\\FileScanner' => 'scanner/class-file-scanner.php',
         'Scanner\\MalwareScanner' => 'scanner/class-malware-scanner.php',
         'Logging\\TrafficLogger' => 'logging/class-traffic-logger.php',
         'Integrations\\Cloudflare' => 'integrations/class-cloudflare.php',
         'Integrations\\LoginSecurity' => 'integrations/class-login-security.php',
+        'Integrations\\TelegramAlerts' => 'integrations/class-telegram-alerts.php',
+        'Integrations\\TwoFactorAuth' => 'integrations/class-two-factor-auth.php',
     ];
 
     if (isset($class_map[$relative_class])) {
@@ -128,11 +131,31 @@ function upshield_init() {
         new UpShield_Admin_Dashboard();
     }
 
-    // Initialize login security
+    // Get options
     $options = get_option('upshield_options', []);
+    
+    // Initialize login security
     if (!empty($options['login_security_enabled'])) {
         require_once UPSHIELD_PLUGIN_DIR . 'includes/integrations/class-login-security.php';
         new \UpShield\Integrations\LoginSecurity();
+    }
+    
+    // Initialize Two-Factor Authentication (NEW in v1.1)
+    if (!empty($options['two_factor_enabled'])) {
+        require_once UPSHIELD_PLUGIN_DIR . 'includes/integrations/class-two-factor-auth.php';
+        new \UpShield\Integrations\TwoFactorAuth();
+    }
+    
+    // Initialize Telegram Alerts (NEW in v1.1)
+    if (!empty($options['telegram_enabled'])) {
+        require_once UPSHIELD_PLUGIN_DIR . 'includes/integrations/class-telegram-alerts.php';
+        new \UpShield\Integrations\TelegramAlerts();
+    }
+    
+    // Initialize Security Headers (NEW in v1.1)
+    if (!empty($options['security_headers_enabled'])) {
+        require_once UPSHIELD_PLUGIN_DIR . 'includes/firewall/class-security-headers.php';
+        new \UpShield\Firewall\SecurityHeaders();
     }
 }
 
