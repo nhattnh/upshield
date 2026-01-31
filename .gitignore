@@ -1,33 +1,58 @@
-# Dependencies
-/node_modules/
-/vendor/
+# UpShield WAF - .gitignore
 
-# IDE
+# Dependencies
+/vendor/
+/node_modules/
+
+# Build artifacts
+/dist/
+/build/
+*.min.js
+*.min.css
+
+# IDE & Editor
 .idea/
 .vscode/
 *.sublime-*
+*.swp
+*.swo
+*~
 
-# OS
+# OS Files
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Logs
 *.log
 debug.log
-
-# Data files (generated at runtime)
-/data/*.db
-/data/*.json
-!/data/index.php
-
-# Temporary files
-*.tmp
-*.swp
-*.bak
-
-# Build
-*.zip
+error.log
 
 # Environment
 .env
 .env.local
+.env.*.local
+
+# Testing
+/coverage/
+.phpunit.result.cache
+phpunit.xml
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+
+# Temporary
+/tmp/
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Package files (generated)
+*.zip
+*.tar.gz
+
+# Documentation build
+/docs/_build/
